@@ -1,0 +1,16 @@
+---
+- name: create group
+  hosts: db
+  tasks:
+  - name: using group module
+    group:
+      name: awx-hwi
+      state: present
+      gid: 2200
+
+  - name: using user module
+    ansible.builtin.user:
+      name: awx-hwi
+      uid: 2200
+      group: awx-hwi
+
